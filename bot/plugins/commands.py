@@ -26,3 +26,8 @@ async def user_info(event: Message):
 @TelegramBot.on(NewMessage(chats=Telegram.OWNER_ID, incoming=True, pattern=r'^/log$'))
 async def send_log(event: NewMessage.Event | Message):
     await event.reply(file='event-log.txt')
+
+@TelegramBot.on(NewMessage(chats=Telegram.OWNER_ID, incoming=True, pattern=r'^/clear$'))
+async def clear_cache(event: NewMessage.Event | Message):
+    TelegramBot._mb_entity_cache.hash_map.clear()
+    await event.reply('Cleared the cache.')
