@@ -11,5 +11,6 @@ logger = getLogger('bot')
 TelegramBot = TelegramClient(
     session='bot',
     api_id=Telegram.API_ID,
-    api_hash=Telegram.API_HASH
+    api_hash=Telegram.API_HASH,
+    entity_cache_limit=50
 )
